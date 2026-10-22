@@ -66,4 +66,218 @@ a{color:inherit;text-decoration:none}
   padding:.95rem 2.1rem;font-weight:700;font-size:1.05rem;letter-spacing:.22em;text-transform:uppercase;transition:color .25s;
   clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)));
 }
-.btn::before{content:"";position:absolute;inset:0;
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.7,0,.2,1)}
+.btn:hover::before{transform:scaleX(1)}
+.btn:hover .t{animation:jit .3s steps(3)}
+.ar{width:10px;height:12px;background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%)}
+.btn.pri{background:var(--yellow);color:#101010}
+.btn.pri::before{background:var(--cyan)}
+.btn.sec{background:var(--cyan);color:var(--cyan)}
+.btn.sec::after{content:"";position:absolute;inset:1px;z-index:-2;background:var(--bg);clip-path:inherit}
+.btn.sec::before{background:var(--cyan)}
+.btn.sec:hover{color:#071013}
+@keyframes jit{25%{transform:translateX(-2px)}50%{transform:translateX(2px);text-shadow:-2px 0 rgba(255,0,60,.55),2px 0 rgba(0,255,255,.55)}75%{transform:translateX(-1px)}}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.6fr 1fr;gap:2.5rem;align-items:center;padding:4.5rem 0 1rem}
+.hero>*{animation:up .7s both}
+.hero>:nth-child(2){animation-delay:.15s}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+.eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem;font-size:.85rem;font-weight:700;letter-spacing:.3em;color:var(--cyan);text-transform:uppercase}
+.eyebrow::before{content:"";width:48px;height:4px;background:var(--yellow);transform:skewX(-35deg)}
+.lab{margin:1.4rem 0 .3rem;font-size:.8rem;font-weight:700;letter-spacing:.32em;color:var(--mute)}
+h1{font-size:clamp(2rem,6.4vw,4.4rem);line-height:1;font-weight:700;text-transform:uppercase;letter-spacing:.02em;overflow-wrap:anywhere}
+h1 span{display:block;color:var(--yellow)}
+.status{display:inline-block;padding:.5rem 1.4rem .5rem 1rem;border-left:4px solid var(--cyan);
+  background:linear-gradient(90deg,rgba(34,228,255,.14),transparent);font-size:1.3rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.cta{display:flex;flex-wrap:wrap;gap:1.1rem;margin-top:2.2rem}
+
+/* KARTU ID */
+.mono{margin:.6rem 0 1rem;font-size:5.5rem;line-height:1;font-weight:700;letter-spacing:.06em;color:transparent;-webkit-text-stroke:1.5px var(--yellow)}
+.hz{height:8px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 8px,var(--bg) 8px 16px)}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--line)}
+.row:last-of-type{border:0}
+.row dt{font-size:.8rem;font-weight:700;letter-spacing:.2em;color:var(--mute)}
+.row dd{font-weight:700;text-align:right}
+.id .hz{margin-bottom:.8rem}
+
+/* SECTION */
+section{padding-top:5rem}
+.sh{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem}
+.sh .n{padding:.1rem .85rem;background:var(--yellow);color:#101010;font-weight:700;font-size:1.05rem;letter-spacing:.1em;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+.sh h2{font-size:1.9rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.sh .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.lead{font-size:1.35rem;line-height:1.6;max-width:62ch}
+
+/* INSTITUSI */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:1.4rem;border-top:1px solid var(--line)}
+.fact{padding:1.1rem 1.4rem 0}
+.fact:first-child{padding-left:0}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact small{display:block;font-size:.78rem;font-weight:700;letter-spacing:.26em;color:var(--mute);text-transform:uppercase}
+.fact strong{display:block;margin-top:.2rem;font-size:1.3rem;font-weight:700;line-height:1.3}
+
+/* MODUL */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;margin-top:1.6rem}
+.skill{--cut:12px;display:flex;flex-direction:column;justify-content:space-between;gap:1.2rem;min-height:128px;padding:1.4rem 1.5rem 1.7rem 1.7rem;transition:transform .25s}
+.skill::after{content:"";position:absolute;left:var(--cut);bottom:0;height:3px;width:36px;background:var(--cyan);transition:width .35s}
+.skill small{font-size:.75rem;font-weight:700;letter-spacing:.28em;color:var(--yellow)}
+.skill strong{font-size:1.2rem;font-weight:700;line-height:1.25;letter-spacing:.05em;text-transform:uppercase}
+.skill:hover{transform:translateY(-4px)}
+.skill:hover::before{background:linear-gradient(135deg,#17262c,var(--panel2))}
+.skill:hover::after{width:calc(100% - var(--cut))}
+
+/* EKSPERIMEN */
+.exp{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.3rem}
+.chips span{padding:.1rem .8rem;border:1px solid var(--line);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+
+/* FOOTER */
+footer{margin-top:6rem}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;padding-top:1.4rem;padding-bottom:1.6rem}
+.foot p{display:flex;align-items:center;gap:.8rem;font-size:.9rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.foot p i{width:9px;height:9px;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .nav ul{display:none}
+  .hero,.exp{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .fact,.fact:first-child{padding:1rem 0}
+  .fact+.fact{border-left:0;border-top:1px solid var(--line)}
+  .btn{flex:1 1 100%;justify-content:center}
+  .sh h2{font-size:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand"><i></i>Operator File</div>
+  <ul>
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#institusi">Institusi</a></li>
+    <li><a href="#modul">Modul</a></li>
+    <li><a href="#eksperimen">Eksperimen</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <header class="hero" id="beranda">
+    <div>
+      <div class="eyebrow">Operator File <span class="sn">26/582512/SV28542</span></div>
+      <p class="lab">NAMA OPERATOR</p>
+      <h1>Muhammad Gallant <span>Sayyidurroyyan</span></h1>
+      <p class="lab">STATUS</p>
+      <div class="status">Mahasiswa D4 Teknologi Rekayasa Elektro</div>
+      <div class="cta">
+        <!-- Ganti dengan alamat email Anda -->
+        <a class="btn pri" href="mailto:email@contoh.com"><span class="t">Inisiasi Kontak</span><i class="ar"></i></a>
+        <!-- Ganti "#" dengan link CV / arsip Anda -->
+        <a class="btn sec" href="#"><span class="t">Arsip Data</span><i class="ar"></i></a>
+      </div>
+    </div>
+
+    <aside class="card cy id">
+      <span class="tag">Operator ID</span>
+      <span class="sn">REV.01</span>
+      <div class="mono">MGS</div>
+      <div class="hz"></div>
+      <dl>
+        <div class="row"><dt>STATUS</dt><dd>Aktif</dd></div>
+        <div class="row"><dt>INSTANSI</dt><dd>UGM</dd></div>
+        <div class="row"><dt>KELAS</dt><dd>RE 1A</dd></div>
+      </dl>
+      <span class="sn bot">26/582512/SV28542</span>
+    </aside>
+  </header>
+
+  <!-- 01 PROFIL -->
+  <section id="profil" class="rv">
+    <div class="sh"><span class="n">01</span><h2>Profil Dasar</h2><i class="rule"></i><span class="sn">SEC-01</span></div>
+    <div class="card">
+      <span class="tag">Profile Data</span>
+      <span class="sn">26/582512/SV28542</span>
+      <p class="lead">Mahasiswa di Sekolah Vokasi, Universitas Gadjah Mada (UGM). Memiliki ketertarikan pada perhitungan teoritis, logika, dan analisis sistem kelistrikan terstruktur.</p>
+    </div>
+  </section>
+
+  <!-- 02 INSTITUSI -->
+  <section id="institusi" class="rv">
+    <div class="sh"><span class="n">02</span><h2>Data Institusi</h2><i class="rule"></i><span class="sn">SEC-02</span></div>
+    <div class="card cy">
+      <span class="tag">Institution Registry</span>
+      <span class="sn">26/582512/SV28542</span>
+      <h3>Universitas Gadjah Mada (UGM)</h3>
+      <div class="facts">
+        <div class="fact"><small>Program Studi</small><strong>D4 Teknologi Rekayasa Elektro</strong></div>
+        <div class="fact"><small>Kelas</small><strong>RE 1A</strong></div>
+        <div class="fact"><small>Unit</small><strong>Sekolah Vokasi</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 MODUL -->
+  <section id="modul" class="rv">
+    <div class="sh"><span class="n">03</span><h2>Modul &amp; Perangkat</h2><i class="rule"></i><span class="sn">SEC-03</span></div>
+    <div class="card">
+      <span class="tag">Skill Matrix</span>
+      <span class="sn">26/582512/SV28542</span>
+      <h3>Familiar Dengan / Sedang Mempelajari</h3>
+      <div class="skills">
+        <div class="skill"><small>MOD-01</small><strong>Analisis Rangkaian DC</strong></div>
+        <div class="skill"><small>MOD-02</small><strong>MATLAB</strong></div>
+        <div class="skill"><small>MOD-03</small><strong>AutoCAD</strong></div>
+        <div class="skill"><small>MOD-04</small><strong>LaTeX</strong></div>
+        <div class="skill"><small>MOD-05</small><strong>Simulator Rangkaian Dasar</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 EKSPERIMEN -->
+  <section id="eksperimen" class="rv">
+    <div class="sh"><span class="n">04</span><h2>Catatan Eksperimen Dasar</h2><i class="rule"></i><span class="sn">SEC-04</span></div>
+    <div class="exp">
+      <div class="card">
+        <span class="tag">Log 001</span>
+        <span class="sn">SV28542</span>
+        <h3>Analisis Sirkuit</h3>
+        <p>Praktik perhitungan arus/tegangan DC (Hukum Kirchhoff, Analisis Nodal, Thevenin) dan pemodelan resistansi internal.</p>
+        <div class="chips"><span>Kirchhoff</span><span>Nodal</span><span>Thevenin</span></div>
+      </div>
+      <div class="card cy">
+        <span class="tag">Log 002</span>
+        <span class="sn">SV28542</span>
+        <h3>Alat Visualisasi</h3>
+        <p>Penggunaan perangkat lunak untuk plotting matematika dasar dan penyusunan dokumen matematis menggunakan LaTeX.</p>
+        <div class="chips"><span>Plotting</span><span>LaTeX</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="hz"></div>
+  <div class="wrap foot">
+    <p><i></i>SYSTEM ONLINE // <span id="y">2026</span> Muhammad Gallant Sayyidurroyyan</p>
+    <span class="sn">26/582512/SV28542</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
