@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammad Gallant Sayyidurroyyan // Operator Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0c0f; --panel:#11151a; --line:#2b343e;
+  --text:#e8edf2; --mute:#8b97a4;
+  --cyan:#00e5ff; --yellow:#ffd400; --orange:#ff7a1a;
+  --cut:18px;
+  --poly:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Rajdhani',sans-serif;font-size:18px;line-height:1.6;
+  background-image:
+    radial-gradient(ellipse at 15% 0%,rgba(0,229,255,.09),transparent 50%),
+    radial-gradient(ellipse at 100% 100%,rgba(255,122,26,.07),transparent 45%),
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:auto,auto,48px 48px,48px 48px;
+  background-attachment:fixed;
+  min-height:100vh;overflow-x:hidden;
+}
+body::after{ /* scanline halus */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);
+}
+.mono{font-family:'Share Tech Mono',monospace}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:.7rem clamp(1rem,4vw,3rem);background:rgba(10,12,15,.88);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-family:'Share Tech Mono',monospace;color:var(--cyan);font-size:.9rem;letter-spacing:.1em}
+.brand i{display:inline-block;width:8px;height:8px;background:var(--yellow);margin-right:.6rem;animation:blink 1.2s steps(2) infinite}
+nav ul{display:flex;gap:1.4rem;list-style:none}
+nav ul a{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--mute);letter-spacing:.12em;text-transform:uppercase;transition:.2s}
+nav ul a:hover{color:var(--yellow);text-shadow:0 0 8px var(--yellow)}
+
+main{max-width:1100px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+section{padding:4rem 0 1rem}
+
+/* PANEL SUDUT TERPOTONG */
+.panel{position:relative;background:var(--line);clip-path:var(--poly);padding:1.6rem 1.8rem}
+.panel::before{content:"";position:absolute;inset:1px;background:var(--panel);clip-path:var(--poly);z-index:0}
+.panel>*{position:relative;z-index:1}
+.panel::after{ /* aksen sudut */
+  content:"";position:absolute;top:0;left:0;width:46px;height:3px;background:var(--cyan);z-index:2;
+  box-shadow:0 0 10px var(--cyan);
+}
+.panel.alt::after{background:var(--yellow);box-shadow:0 0 10px var(--yellow)}
+.panel.hot::after{background:var(--orange);box-shadow:0 0 10px var(--orange)}
+
+.sec-title{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+.sec-title .idx{font-family:'Share Tech Mono',monospace;color:var(--yellow);font-size:.85rem;border:1px solid var(--yellow);padding:0 .45rem}
+.sec-title h2{font-size:1.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.sec-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+/* HERO */
+.hero{padding-top:3.5rem}
+.term{padding:0}
+.term-bar{
+  display:flex;justify-content:space-between;padding:.55rem 1.2rem;border-bottom:1px solid var(--line);
+  font-family:'Share Tech Mono',monospace;font-size:.75rem;color:var(--mute);letter-spacing:.1em
+}
+.term-bar b{color:var(--cyan);font-weight:400}
+.term-body{padding:1.8rem 1.8rem 2.2rem}
+.line{font-family:'Share Tech Mono',monospace;font-size:.92rem;color:var(--mute);margin-bottom:.35rem}
+.line .k{color:var(--cyan)} .line .ok{color:var(--yellow)}
+.js .boot{opacity:0;transform:translateX(-8px);transition:.35s}
+.js .boot.on{opacity:1;transform:none}
+.label{font-family:'Share Tech Mono',monospace;color:var(--cyan);font-size:.8rem;letter-spacing:.2em;margin-top:1.4rem}
+.name{
+  position:relative;display:inline-block;margin:.2rem 0 .4rem;
+  font-size:clamp(2.1rem,6.2vw,4.1rem);line-height:1.05;font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+}
+.glitch::before,.glitch::after{
+  content:attr(data-text);position:absolute;inset:0;pointer-events:none;
+  clip-path:inset(0 0 100% 0);
+}
+.glitch::before{color:var(--cyan);animation:g1 4s infinite}
+.glitch::after{color:var(--yellow);animation:g2 4s infinite}
+@keyframes g1{0%,88%,100%{clip-path:inset(0 0 100% 0);transform:none}90%{clip-path:inset(10% 0 60% 0);transform:translate(-4px,0)}94%{clip-path:inset(55% 0 20% 0);transform:translate(3px,0)}97%{clip-path:inset(80% 0 2% 0);transform:translate(-2px,0)}}
+@keyframes g2{0%,89%,100%{clip-path:inset(0 0 100% 0);transform:none}91%{clip-path:inset(40% 0 35% 0);transform:translate(4px,0)}95%{clip-path:inset(5% 0 80% 0);transform:translate(-3px,0)}98%{clip-path:inset(65% 0 15% 0);transform:translate(2px,0)}}
+.status{
+  display:inline-flex;align-items:center;gap:.7rem;margin-top:.4rem;padding:.35rem 1rem;
+  border-left:3px solid var(--yellow);background:rgba(255,212,0,.07);
+  font-size:1.15rem;font-weight:600;letter-spacing:.06em;
+}
+.status small{font-family:'Share Tech Mono',monospace;color:var(--yellow);font-size:.75rem;letter-spacing:.15em}
+.cta{display:flex;flex-wrap:wrap;gap:1.1rem;margin-top:2rem}
+
+/* TOMBOL */
+.btn{
+  --c:14px;position:relative;display:inline-flex;align-items:center;gap:.7rem;overflow:hidden;
+  padding:.85rem 1.8rem;font:700 1rem 'Rajdhani',sans-serif;letter-spacing:.18em;text-transform:uppercase;
+  clip-path:polygon(0 0,calc(100% - var(--c)) 0,100% var(--c),100% 100%,var(--c) 100%,0 calc(100% - var(--c)));
+  transition:.2s;
+}
+.btn::after{ /* sapuan cahaya */
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:rgba(255,255,255,.35);transform:skewX(-25deg);transition:left .45s;
+}
+.btn:hover::after{left:130%}
+.btn:hover{animation:jit .32s steps(2) 1}
+.btn.pri{background:var(--cyan);color:#001216}
+.btn.pri:hover{background:#7df3ff;box-shadow:0 0 24px rgba(0,229,255,.6)}
+.btn.sec{background:rgba(255,212,0,.06);color:var(--yellow);box-shadow:inset 0 0 0 1px var(--yellow)}
+.btn.sec:hover{background:var(--yellow);color:#171200;text-shadow:none}
+@keyframes jit{0%{transform:translate(0)}25%{transform:translate(-3px,1px) skewX(-6deg)}50%{transform:translate(3px,-1px) skewX(5deg)}75%{transform:translate(-2px,0)}100%{transform:none}}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:1.6rem}
+.grid-exp{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.panel h3{font-size:1.25rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+.panel p{color:#c3ccd5}
+.tag{font-family:'Share Tech Mono',monospace;font-size:.75rem;color:var(--cyan);letter-spacing:.15em;display:block;margin-bottom:.5rem}
+.panel.alt .tag{color:var(--yellow)} .panel.hot .tag{color:var(--orange)}
+
+.data-row{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.data-row:last-child{border:0}
+.data-row span:first-child{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--mute);letter-spacing:.1em}
+.data-row span:last-child{font-weight:600;text-align:right}
+
+/* BADGES */
+.sub{font-family:'Share Tech Mono',monospace;color:var(--mute);font-size:.85rem;letter-spacing:.1em;margin:-.6rem 0 1.4rem}
+.badges{display:flex;flex-wrap:wrap;gap:.9rem}
+.badge{
+  --c:9px;display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.1rem;background:#151b21;
+  font-weight:600;letter-spacing:.06em;color:var(--text);
+  clip-path:polygon(0 0,calc(100% - var(--c)) 0,100% var(--c),100% 100%,var(--c) 100%,0 calc(100% - var(--c)));
+  box-shadow:inset 0 0 0 1px var(--line);transition:.2s;cursor:default;
+}
+.badge em{font:normal .7rem 'Share Tech Mono',monospace;color:var(--yellow)}
+.badge::before{content:"";width:7px;height:7px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.badge:hover{background:rgba(0,229,255,.1);color:var(--cyan);transform:translateY(-3px);box-shadow:inset 0 0 0 1px var(--cyan)}
+
+/* FOOTER */
+footer{margin-top:5rem;border-top:1px solid var(--line);padding:1.6rem clamp(1rem,4vw,3rem);text-align:center;
+  font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:.12em;color:var(--mute)}
+footer .on{color:var(--cyan)}
+.cursor{display:inline-block;width:9px;height:1em;background:var(--yellow);vertical-align:-2px;margin-left:.4rem;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* REVEAL */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:800px){
+  nav ul{display:none}
+  .grid2,.grid-exp{grid-template-columns:1fr}
+  .btn{flex:1 1 100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><i></i>ENDFIELD//OPERATOR.NET</div>
+  <ul>
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#institusi">Institusi</a></li>
+    <li><a href="#modul">Modul</a></li>
+    <li><a href="#eksperimen">Eksperimen</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="beranda">
+    <div class="panel term">
+      <div class="term-bar"><span>TERMINAL // DATA_OPERATOR.SYS</span><b>● ONLINE</b></div>
+      <div class="term-body">
+        <div class="line boot"><span class="k">&gt;</span> menginisiasi koneksi ke basis data operator...</div>
+        <div class="line boot"><span class="k">&gt;</span> verifikasi identitas ........ <span class="ok">[OK]</span></div>
+        <div class="line boot"><span class="k">&gt;</span> memuat profil ........ <span class="ok">[OK]</span></div>
+        <div class="label boot">// NAMA OPERATOR</div>
+        <h1 class="name glitch boot" data-text="Muhammad Gallant Sayyidurroyyan">Muhammad Gallant Sayyidurroyyan</h1><br>
+        <div class="label boot">// STATUS</div>
+        <div class="status boot"><small>AKTIF</small> Mahasiswa D4 Teknologi Rekayasa Elektro</div>
+        <div class="cta boot">
+          <!-- Ganti alamat email di bawah dengan email Anda -->
+          <a class="btn pri" href="mailto:email@contoh.com">▶ Inisiasi Kontak</a>
+          <!-- Ganti "#" dengan link CV/arsip Anda -->
+          <a class="btn sec" href="#" onclick="return false;">◢ Arsip Data</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFIL -->
+  <section id="profil" class="rv">
+    <div class="sec-title"><span class="idx">01</span><h2>Profil Dasar</h2></div>
+    <div class="panel">
+      <span class="tag">// PROFILE.DAT</span>
+      <p>Mahasiswa di Sekolah Vokasi, Universitas Gadjah Mada (UGM). Memiliki ketertarikan pada perhitungan teoritis, logika, dan analisis sistem kelistrikan terstruktur.</p>
+    </div>
+  </section>
+
+  <!-- INSTITUSI -->
+  <section id="institusi" class="rv">
+    <div class="sec-title"><span class="idx">02</span><h2>Data Institusi</h2></div>
+    <div class="panel alt">
+      <span class="tag">// INSTITUTION.REG</span>
+      <h3>Universitas Gadjah Mada (UGM)</h3>
+      <div class="data-row"><span>PROGRAM STUDI</span><span>D4 Teknologi Rekayasa Elektro</span></div>
+      <div class="data-row"><span>KELAS</span><span>RE 1A</span></div>
+      <div class="data-row"><span>UNIT</span><span>Sekolah Vokasi</span></div>
+    </div>
+  </section>
+
+  <!-- MODUL -->
+  <section id="modul" class="rv">
+    <div class="sec-title"><span class="idx">03</span><h2>Modul &amp; Perangkat</h2></div>
+    <div class="panel hot">
+      <span class="tag">// SKILL_MATRIX</span>
+      <h3>Familiar Dengan / Sedang Mempelajari</h3>
+      <div class="badges" style="margin-top:1rem">
+        <span class="badge">Analisis Rangkaian DC <em>MOD-01</em></span>
+        <span class="badge">MATLAB <em>MOD-02</em></span>
+        <span class="badge">AutoCAD <em>MOD-03</em></span>
+        <span class="badge">LaTeX <em>MOD-04</em></span>
+        <span class="badge">Simulator Rangkaian Dasar <em>MOD-05</em></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EKSPERIMEN -->
+  <section id="eksperimen" class="rv">
+    <div class="sec-title"><span class="idx">04</span><h2>Catatan Eksperimen Dasar</h2></div>
+    <div class="grid-exp">
+      <div class="panel">
+        <span class="tag">LOG-001 // ANALISIS SIRKUIT</span>
+        <h3>Analisis Sirkuit</h3>
+        <p>Praktik perhitungan arus/tegangan DC (Hukum Kirchhoff, Analisis Nodal, Thevenin) dan pemodelan resistansi internal.</p>
+      </div>
+      <div class="panel alt">
+        <span class="tag">LOG-002 // VISUALISASI</span>
+        <h3>Alat Visualisasi</h3>
+        <p>Penggunaan perangkat lunak untuk plotting matematika dasar dan penyusunan dokumen matematis menggunakan LaTeX.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="on">SYSTEM ONLINE</span> // <span id="year">2026</span> Muhammad Gallant Sayyidurroyyan<span class="cursor"></span>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  // Tahun otomatis
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Urutan boot terminal
+  document.querySelectorAll('.boot').forEach((el, i) => {
+    setTimeout(() => el.classList.add('on'), 250 + i * 260);
+  });
+
+  // Reveal saat scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
